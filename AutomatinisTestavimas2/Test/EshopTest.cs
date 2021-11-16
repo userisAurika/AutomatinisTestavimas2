@@ -10,17 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
-{   [TestFixture]//=====>>> ??nesu tikra
+{   //[TestFixture]//=====>>> ??nesu tikra
     public class EshopTest
     {
         private static EshopPage _page;
+        //private static EshopLoginPage _page2;
+        //private static EshopMenuPage _page3;
+
+
         [OneTimeSetUp]
         public static void SetUp()
         {
             IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);// testo stabilimui
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
             _page = new EshopPage(driver);
+            //_page2 = new EshopLoginPage(driver);
+           // _page3 = new EshopMenuPage(driver);
         }
         [OneTimeTearDown]
 
@@ -29,35 +35,20 @@ namespace AutomatinisTestavimas2.Test
             _page.CloseBrowser();
         }
         /*[Test]
-        public void BunnerAcceptAndAccountClick() //gal nereikia
+        public void AcceptPrivatepolicytClick()
         {
-            _page.PrivatePolicy()
-                .ClickAccountButton();
+            _page.PrivatePolicy();
         }*/
         [Test]
-        public void VerifyInvalidLogin() 
+        public void ChangeLanguage() 
         {
-            string myText = "test";
-            _page.PrivatePolicy()
-                .ClickAccountButton()
-                .InputEmailText(myText)
-                .InputPasswordText(myText)
-                .ClickButton()
-                .CheckResult();
+            _page.PrivatePolicy();
+            _page.ClickLanguageChoose("На русском")
+                 .VerifyResult("На русском");
+                 //.CklickVidausSviestuvai("Daugiafunkciniai šviestuvai")
+                // .VerifyChoiceResult("Daugiafunkciniai šviestuvai");
         }
-        [Test]
-        public void VerifyValidLogin() 
-        {
-            string myMail = "aurikaa@gmail.com";
-            string myPassword = "test321";
-            _page.PrivatePolicy()
-               .ClickAccountButton()
-                .InputEmailText(myMail)
-                .InputPasswordText(myPassword)
-                .ClickButton()
-                .CheckResult();
-
-        }
-
     }
 }
+
+

@@ -1,0 +1,5 @@
+﻿Build started...
+1>------ Build started: Project: AutomatinisTestavimas2, Configuration: Debug Any CPU ------
+1>C:\Users\Aurika\source\repos\AutomatinisTestavimas2\AutomatinisTestavimas2\Pages\VartuTechnikaPage.cs(15,35,15,42): warning CS0649: Field 'VartuTechnikaPage._driver' is never assigned to, and will always have its default value null
+1>  AutomatinisTestavimas2 -> C:\Users\Aurika\source\repos\AutomatinisTestavimas2\AutomatinisTestavimas2\bin\Debug\AutomatinisTestavimas2.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
