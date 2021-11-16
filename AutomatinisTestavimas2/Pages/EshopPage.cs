@@ -16,7 +16,17 @@ namespace AutomatinisTestavimas2.Pages
         private const string ResultText = "На русском";
         private const string ChoiceText = "Daugiafunkciniai šviestuvai";
         private IWebElement CookiesApprove => Driver.FindElement(By.CssSelector("body > div.cms_cookies.visible > div > div"));
-        private SelectElement ChooseLanguage => new SelectElement(Driver.FindElement(By.Id("language")));
+        private SelectElement ChooseLanguage
+        {
+            get
+            {
+                IWebElement el = Driver.FindElement(By.CssSelector("form#language > li:nth-child(2) > a"));
+                el.Click();
+                //IWebElement e = Driver.FindElement(By.Id("language"));
+                return new SelectElement(el);
+            }
+        }
+
         private IWebElement ResultTextElement => Driver.FindElement(By.XPath("/html/body/header[2]/div/div/div[2]/ul/li[5]/text()"));
         private SelectElement  ButtonVidausSviestuvai => new SelectElement(Driver.FindElement(By.CssSelector("body > nav > div > div > ul > li:nth-child(2) > a")));
         private IWebElement ResultTextelement => Driver.FindElement(By.CssSelector("body > nav > div > div > ul > li:nth-child(2) > ul > li:nth-child(3)"));

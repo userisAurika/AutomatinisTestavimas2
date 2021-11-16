@@ -43,6 +43,7 @@ namespace AutomatinisTestavimas2.Test
         public void ChangeLanguage() 
         {
             _page.PrivatePolicy();
+            Console.WriteLine("Testing...");
             _page.ClickLanguageChoose("На русском")
                  .VerifyResult("На русском");
                  //.CklickVidausSviestuvai("Daugiafunkciniai šviestuvai")
