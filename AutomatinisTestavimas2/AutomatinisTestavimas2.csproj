@@ -60,6 +60,8 @@
     <Compile Include="Demo02.cs" />
     <Compile Include="demo01.cs" />
     <Compile Include="Demo03.cs" />
+    <Compile Include="Driver\Browsers.cs" />
+    <Compile Include="Driver\CustumeDriver.cs" />
     <Compile Include="Juodrastis.cs" />
     <Compile Include="NamuDarbai.cs" />
     <Compile Include="CheckBoxLektore.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="papildoma uzduotis.cs" />
     <Compile Include="PapUzduotisPagalLektore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\CheckBoxDemoTest.cs" />
     <Compile Include="Test\DropDownTest.cs" />
     <Compile Include="Test\EShopJuodrastisTest.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="Test\NDDropDownTest.cs" />
     <Compile Include="Test\SeleniumInputTest.cs" />
     <Compile Include="Test\VartuTechnikaTest.cs" />
+    <Compile Include="Tools\MyScreenShot.cs" />
     <Compile Include="VartuTechnika.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,8 @@ namespace AutomatinisTestavimas2.Pages
         private const string ResultText = "На русском";
         private const string ChoiceText = "Daugiafunkciniai šviestuvai";
         private IWebElement CookiesApprove => Driver.FindElement(By.CssSelector("body > div.cms_cookies.visible > div > div"));
-        private SelectElement ChooseLanguage
+        private SelectElement ChooseLanguage => new SelectElement(Driver.FindElement(By.CssSelector("body > header.upper.container-fluid.hidden-xs > div > div > div.col-xs-12.col-sm-12.col-md-6.tright > ul > li:nth-child(5)")));
+        /*private SelectElement ChooseLanguage
         {
             get
             {
@@ -25,7 +26,7 @@ namespace AutomatinisTestavimas2.Pages
                 //IWebElement e = Driver.FindElement(By.Id("language"));
                 return new SelectElement(el);
             }
-        }
+        }*/
 
         private IWebElement ResultTextElement => Driver.FindElement(By.XPath("/html/body/header[2]/div/div/div[2]/ul/li[5]/text()"));
         private SelectElement  ButtonVidausSviestuvai => new SelectElement(Driver.FindElement(By.CssSelector("body > nav > div > div > ul > li:nth-child(2) > a")));
@@ -45,9 +46,10 @@ namespace AutomatinisTestavimas2.Pages
             ChooseLanguage.SelectByText(text);
             return this;
         }
+
         public EshopPage VerifyResult(string selectedLanguage) //patikrinu ar pasirinkta diena ta kurios tikejausi(noriu palyginti,)
         {
-            Assert.IsTrue(ResultTextElement.Text.Equals(ResultText + selectedLanguage), $"Result is wrong, not {selectedLanguage}");
+            Assert.IsTrue(ResultTextElement.Text.Equals(ResultText)); //+ selectedLanguage), $"Result is wrong, not {selectedLanguage}");
             return this;
         }/*
         public EshopPage CklickVidausSviestuvai(string text) 
@@ -61,8 +63,6 @@ namespace AutomatinisTestavimas2.Pages
             //return this;
             Assert.IsTrue(ResultTextelement.Text.Equals(ChoiceText + selectedLine), $"Result is wrong, not {selectedLine}");
             return this;
-            // Assert.IsTrue(!element.Selected, "Checkbox is still checked");
-            //Assert.That(!element.Selected, "Checkbox is still checked");
         }
         */
     }
