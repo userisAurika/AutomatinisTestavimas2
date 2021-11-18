@@ -71,10 +71,10 @@
     <Compile Include="Pages\CheckBoxDemoPage.cs" />
     <Compile Include="Pages\DropDownPage.cs" />
     <Compile Include="Pages\EshopJuodrastisPage.cs" />
-    <Compile Include="Pages\EshopLoginPage.cs" />
+    <Compile Include="Pages\EshopNewLogOutPage.cs" />
+    <Compile Include="Pages\EshopNewPage.cs" />
     <Compile Include="Pages\EshopPage.cs" />
     <Compile Include="Pages\EshopMenuPage.cs" />
-    <Compile Include="Pages\ExamplePage.cs" />
     <Compile Include="Pages\NDDropDownPage.cs" />
     <Compile Include="Pages\SeleniumInputPage.cs" />
     <Compile Include="Pages\VartuTechnikaPage.cs" />
@@ -85,9 +85,12 @@
     <Compile Include="Test\CheckBoxDemoTest.cs" />
     <Compile Include="Test\DropDownTest.cs" />
     <Compile Include="Test\EShopJuodrastisTest.cs" />
+    <Compile Include="Test\EshopNewLogOutTestcs.cs" />
+    <Compile Include="Test\EshopNewTest.cs" />
     <Compile Include="Test\EshopTest.cs" />
     <Compile Include="Test\NDDropDownTest.cs" />
     <Compile Include="Test\SeleniumInputTest.cs" />
+    <Compile Include="Test\EshopMenuTest.cs" />
     <Compile Include="Test\VartuTechnikaTest.cs" />
     <Compile Include="Tools\MyScreenShot.cs" />
     <Compile Include="VartuTechnika.cs" />

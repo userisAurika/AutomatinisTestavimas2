@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Pages
@@ -21,7 +22,7 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement UserEmailInput => Driver.FindElement(By.Id("CustomerEmail"));
         private IWebElement UserPasswordInput => Driver.FindElement(By.Id("CustomerPassword"));
         private IWebElement LoginButton => Driver.FindElement(By.CssSelector("#customer_login > button"));
-        private IWebElement LoginMessage => Driver.FindElement(By.CssSelector(".shopify-challenge__message"));////(By.CssSelector("#customer_login > h2"));
+        private IWebElement LoginMessage => Driver.FindElement(By.CssSelector(".shopify-challenge__message"));//.shopify-challenge__message"));////(By.CssSelector("#customer_login > h2"));
         private IWebElement ClickBunner => Driver.FindElement(By.Id("shopify-privacy-banner-accept-button"));
 
         public EshopJuodrastisPage(IWebDriver webdriver) : base(webdriver)//konstruktorius
@@ -31,6 +32,7 @@ namespace AutomatinisTestavimas2.Pages
         public EshopJuodrastisPage PrivatePolicy()
         {
             ClickBunner.Click();
+            Thread.Sleep(2000);
             return this;
         }
         public EshopJuodrastisPage ClickAccountButton()
@@ -42,12 +44,14 @@ namespace AutomatinisTestavimas2.Pages
         {
             UserEmailInput.Clear();
             UserEmailInput.SendKeys(text);
+            Thread.Sleep(2000);
             return this;
         }
         public EshopJuodrastisPage InputPasswordText(string text)
         {
             UserPasswordInput.Clear();
             UserPasswordInput.SendKeys(text);
+            Thread.Sleep(2000);
             return this;
         }
 
@@ -59,7 +63,7 @@ namespace AutomatinisTestavimas2.Pages
         private void WaitForResult() 
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));// kodo stabilizavimui
-            wait.Until(d => LoginMessage.Displayed);// kai reikia palaukti 
+            wait.Until(d => LoginMessage.Displayed);// kai reikia palaukti  
         }
 
         public EshopJuodrastisPage CheckResult()

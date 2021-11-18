@@ -65,7 +65,7 @@ namespace AutomatinisTestavimas2
                 button.Click();
             }
 
-            IReadOnlyCollection<IWebElement> multipleCheckboxList = _driver.FindElements(By.ClassName("cb1-element"));
+           /* IReadOnlyCollection<IWebElement> multipleCheckboxList = _driver.FindElements(By.ClassName("cb1-element"));
             int counter = 0;
             foreach (IWebElement element in multipleCheckboxList)
             {
@@ -74,7 +74,7 @@ namespace AutomatinisTestavimas2
                     counter++;
                 }
             }
-            Assert.AreEqual(0, counter, "Some of the checkboxes are still checked");
+            Assert.AreEqual(0, counter, "Some of the checkboxes are still checked");*/
         }
     }
 }

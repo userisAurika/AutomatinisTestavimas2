@@ -11,32 +11,42 @@ namespace AutomatinisTestavimas2.Pages
 {
    public class EshopMenuPage : BasePage
     {
-        private const string PageAddress = "https://www.dermabalt.lt/";
-        /*private const string ResultText = "Šampūnai";
-        private IWebElement _shopButton => Driver.FindElement(By.CssSelector("li:nth-child(1) > details-disclosure > details > .header__menu-item path"));
-        private IWebElement _listMenutButton => Driver.FindElement(By.CssSelector(".header__menu-item > .icon:nth-child(1)"));
-
-        private SelectElement _menuDropDown => new SelectElement(Driver.FindElement(By.CssSelector("#shopify-section-header > sticky-header > header > nav > ul > li:nth-child(1) > details-disclosure > details > ul > li:nth-child(2) > details > ul > li:nth-child(1) > a")));
-        private IWebElement _productFormButton => Driver.FindElement(By.CssSelector("#product-form-template--15194966818984__main > div > button > span"));
-        private IWebElement _resultTextElement => Driver.FindElement(By.LinkText("Šampūnai"));
-        private IWebElement _continueButton => Driver.FindElement(By.CssSelector(".link.button-label"));
-       */
-
-        public EshopMenuPage(IWebDriver webdriver) : base(webdriver)//konstruktorius
+        private const string PageAddress = "https://medexy.lt/odos-prieziura";
+        private IWebElement ConsentButton => Driver.FindElement(By.XPath("//html/body/div[2]/div/button[2]"));
+        private IWebElement BathAndShowerGel => Driver.FindElement(By.XPath("/html/body/main/div[1]/div[3]/div[3]/div[1]/a[2]"));
+        private IWebElement OpenFullList => Driver.FindElement(By.XPath("/html/body/main/div[1]/aside/div/div[2]/button[1]"));
+        ///html/body/main/div[1]/aside/div/div[2]/div[2]//listo xpath
+        ///html/body/main/div[1]/aside/div/div[2]/div[2]/label[4]/span[2]//jautri oda elementas
+        private IReadOnlyCollection<IWebElement> SkinTypeCheckboxList = Driver.FindElements(By.XPath("/html/body/main/div[1]/aside/div/div[2]/div[2]/label[4]/span[2]"));
+        //private IReadOnlyCollection<IWebElement> SkinTypeCheckboxList = Driver.FindElements(By.XPath("//html/body/main/div[1]/aside/div/div[2]"));
+       //private IWebElement SelectedCheckbox => Driver.FindElement(By.XPath("/html/body/main/div[1]/aside/div/div[2]/div[2]/label[4]/span[2]"));
+        public EshopMenuPage(IWebDriver webdriver) : base(webdriver)
         {
             Driver.Url = PageAddress;
         }
-        /*public EshopLoginPage ShopButton()
+        public EshopMenuPage ConcentButton() 
         {
-            _shopButton.Click();
+            ConsentButton.Click();
             return this;
         }
-        public EshopLoginPage MenuList()
+        public EshopMenuPage OpenList() 
         {
-            _listMenutButton.Click();
+            OpenFullList.Click();
             return this;
         }
-   
-        */
+        public EshopMenuPage SkinTypeList() 
+        {
+            foreach (IWebElement element in SkinTypeCheckboxList)
+            {
+                element.Click();
+            }
+            return this;
+        }
+
+        public EshopMenuPage ChooseFirstItem() 
+        {
+            BathAndShowerGel.Click();
+            return this;    
+        }
     }
 }
