@@ -33,7 +33,7 @@ namespace AutomatinisTestavimas2.Test
         {
             _page.ConcentButton()
                 .OpenList()
-                .SkinTypeList()
+                .SkinTipeBox()
                 .ChooseFirstItem();
         }
 
