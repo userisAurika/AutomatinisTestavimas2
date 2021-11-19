@@ -37,7 +37,9 @@ namespace AutomatinisTestavimas2.Test
                  .InputEmailText(myMail)
                  .InputPasswordText(myPassword)
                  .ClickButton()
-                 .CheckIfLoginWasSuccessful();
+                 .CheckIfLoginWasSuccessful()
+                 .ClickLogOut()
+                 .Out();
         }
         [Test]
         public void VerifyInvalidLogin()
@@ -54,6 +56,13 @@ namespace AutomatinisTestavimas2.Test
         public void OpenNewbutton()
         {
             _page.ClickSinCare();
+        }
+        [Test]
+        public void SearchField() 
+        {
+            string myItem = "ZARQA VONIOS IR DUŠO GELIS JAUTRIAI ODAI, 200 ml";
+               _page.CheckSearchField(myItem);
+                
         }
     }
 }

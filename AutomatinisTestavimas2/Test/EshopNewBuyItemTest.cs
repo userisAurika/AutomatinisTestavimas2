@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-   public class EshopMenuTest
+   public class EshopNewBuyItemTest
     {
-        private static EshopMenuPage _page;
+        private static EshopNewBuyItemPage _page;
         
         [OneTimeSetUp]
         public static void SetUp()
@@ -20,7 +20,7 @@ namespace AutomatinisTestavimas2.Test
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
-            _page = new EshopMenuPage(driver);
+            _page = new EshopNewBuyItemPage(driver);
         }
         [OneTimeTearDown]
 
@@ -29,12 +29,18 @@ namespace AutomatinisTestavimas2.Test
             _page.CloseBrowser();
         }     
         [Test]
-        public void ChooseFirstItem() 
+        public void BuyFirstItem() 
         {
-            _page.ConcentButton()
-                .OpenList()
-                .SkinTipeBox()
-                .ChooseFirstItem();
+            _page.AcceptCookie()
+                .ChooseFindItem()
+                .ClickOnBasketButtonToBuy()
+                .FirstStepToBuy()
+                .SecondStepToBuy()
+                .CheckSum()
+                .FinalButton()
+                .FinalInfo();
+
+
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,6 @@ namespace AutomatinisTestavimas2.Pages
    public class EshopNewPage : BasePage
     {
         private const string PageAddress = "https://medexy.lt/";
-        private const string TextToCheck = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
-        private const string TextToCheckValue = "Mano paskyra";
-         
-        //alert alert-danger alert-dismissible
         private IWebElement AccountButton => Driver.FindElement(By.CssSelector("button > span:nth-child(1)"));
         private IWebElement UserEmailInput => Driver.FindElement(By.Name("email"));
         private IWebElement UserPasswordInput => Driver.FindElement(By.Name("password"));
@@ -26,6 +23,12 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement MyLogin => Driver.FindElement(By.XPath("//html/body/main/div[1]/div[1]/h1"));
         private IWebElement LoginMessage => Driver.FindElement(By.XPath("//html/body/main/div[1]/div[3]"));
         private IWebElement SkinCare => Driver.FindElement(By.CssSelector("#menu > ul > li:nth-child(2) > a"));
+        private IWebElement SearchFieldButton => Driver.FindElement(By.CssSelector("#search > form > input[type=text]:nth-child(1)"));
+        private IWebElement Search => Driver.FindElement(By.CssSelector("#search > form > input[type=submit]:nth-child(2)"));
+        private IWebElement AgreeCookie => Driver.FindElement(By.CssSelector("#cookies_box > div > button.agree_button"));
+
+        private IWebElement LogOutFirst => Driver.FindElement(By.CssSelector("body > header > div.wrap > div.top > div.header-buttons > div > div.account-button.red > button"));
+        private IWebElement LogOut => Driver.FindElement(By.CssSelector("body > header > div.wrap > div.top > div.header-buttons > div > div.account-button.red > div > a"));
 
         public EshopNewPage(IWebDriver webdriver) : base(webdriver)
         {
@@ -60,24 +63,27 @@ namespace AutomatinisTestavimas2.Pages
             LoginButton.Click();
             return this;
         }
-        private void WaitForResult() 
-        {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-            wait.Until(d => LoginMessage.Displayed); 
-        }
 
         public EshopNewPage CheckIfLoginFailed()
         {
-            //WaitForResult();
-            Thread.Sleep(1000 * 2);
-            //Assert.IsFalse(LoginMessage.Text.Equals(TextToCheck));
+            Thread.Sleep(2000 );
             var statusMsg = LoginMessage.Text;
             //var expectedAlertValue = "Įspėjimas: Jūs viršijote leistiną bandymų prisijungti kiekį. Prašome pamėginti dar kartą už 1 valandos.";
             var expectedAlertValue = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
-            Assert.IsTrue(statusMsg.Equals(expectedAlertValue));
-            
+            Assert.IsTrue(statusMsg.Equals(expectedAlertValue));   
             return this;
         }
+        public EshopNewPage ClickLogOut() 
+        {
+            LogOutFirst.Click();
+            return this;
+        }
+        public EshopNewPage Out() 
+        {
+            LogOut.Click();
+            return this;
+        }
+
         public EshopNewPage CheckIfLoginWasSuccessful() 
         {
             Thread.Sleep(2000);
@@ -89,6 +95,16 @@ namespace AutomatinisTestavimas2.Pages
         public EshopNewPage ClickSinCare()
         {
             SkinCare.Click();
+            return this;
+        }
+        public EshopNewPage CheckSearchField(string text) 
+        {
+            Actions action = new Actions(Driver);
+            action.Click(AgreeCookie).Perform();
+            Thread.Sleep(2000);
+            action.MoveToElement(SearchFieldButton).Perform();
+            SearchFieldButton.SendKeys(text);
+            action.Click(Search).Perform();
             return this;
         }
 

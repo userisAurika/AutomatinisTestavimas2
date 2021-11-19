@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-    public class EshopNewLogOutTestcs
+    public class EshopNewFirstItemTest
     {
-        private static EshopNewLogOutPage _page;
+        private static EshopNewFirtsItemPage _page;
+
         [OneTimeSetUp]
         public static void SetUp()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
-            _page = new EshopNewLogOutPage(driver);
+            _page = new EshopNewFirtsItemPage(driver);
         }
         [OneTimeTearDown]
         public static void TearDown()
@@ -27,10 +28,14 @@ namespace AutomatinisTestavimas2.Test
             _page.CloseBrowser();
         }
         [Test]
-        public void LogOut() 
+        public void CheckWishList() 
         {
-            _page.ClickButton()
-                .ClickLogOut();
+            _page.AgreeClick()
+                 .PutToWishList()
+                 .CheckWishButton()
+                 .CheckIfWithoutLogin()
+                 .CheckItembefore()
+                 .CheckPutToBasket();
         }
     }
 }
