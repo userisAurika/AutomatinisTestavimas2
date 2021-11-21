@@ -11,18 +11,24 @@ namespace AutomatinisTestavimas2.Pages
 {
     public class VartuTechnikaPage : BasePage
     {
+        private const string PageAddress= "http://vartutechnika.lt/";
 
-        private static IWebDriver _driver;
-
-        private IWebElement _widthInput => _driver.FindElement(By.Id("doors_width"));
-        private IWebElement _heightInput => _driver.FindElement(By.Id("doors_height"));
-        private IWebElement _autoCheckBox => _driver.FindElement(By.Id("automatika"));
-        private IWebElement _montavimoCheckBox => _driver.FindElement(By.Id("darbai"));
-        private IWebElement _calculateButton => _driver.FindElement(By.Id("calc_submit"));
-        private IWebElement _resultBox => _driver.FindElement(By.CssSelector("#calc_result > div"));
+        private IWebElement _widthInput => Driver.FindElement(By.Id("doors_width"));
+        private IWebElement _heightInput => Driver.FindElement(By.Id("doors_height"));
+        private IWebElement _autoCheckBox => Driver.FindElement(By.Id("automatika"));
+        private IWebElement _montavimoCheckBox => Driver.FindElement(By.Id("darbai"));
+        private IWebElement _calculateButton => Driver.FindElement(By.Id("calc_submit"));
+        private IWebElement _resultBox => Driver.FindElement(By.CssSelector("#calc_result > div"));
 
         public VartuTechnikaPage(IWebDriver webdriver): base(webdriver)// konstruktorius, panaikinamas nes paveldesiu is base klases
         {
+            Driver.Url = PageAddress;
+        }
+        public VartuTechnikaPage NavigateToDefaultPage() 
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
         }
 
         /*metodai aprasyti nieko negrazina, atlieka kazkokius zingsnius ir nieko daugiau
@@ -68,7 +74,7 @@ namespace AutomatinisTestavimas2.Pages
         }
         private void WaitForResult() // prie privataus nesiraso => VartuTechnikaPage, prirasant return this;
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));// kodo stabilizavimui
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));// kodo stabilizavimui
             wait.Until(d => _resultBox.Displayed);// kai reikia palaukti 
         }
         public VartuTechnikaPage CheckResult (string expectedResult) 

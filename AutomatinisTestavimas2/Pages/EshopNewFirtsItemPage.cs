@@ -18,10 +18,14 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement CheckItem => Driver.FindElement(By.CssSelector(" body > main > div.wrap.account-page > div.page-content > div > div > a.title"));
         private IWebElement PutToBasket => Driver.FindElement(By.Id("button-cart"));
         public EshopNewFirtsItemPage(IWebDriver webdriver) : base(webdriver)
+        {}
+        public EshopNewFirtsItemPage NavigateToDefaultPage()
         {
-           
-            Driver.Url = PageAddress;
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
         }
+
         public EshopNewFirtsItemPage AgreeClick()
         {
             AgreeButton.Click();

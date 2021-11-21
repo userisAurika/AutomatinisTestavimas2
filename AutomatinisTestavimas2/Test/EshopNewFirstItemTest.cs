@@ -12,7 +12,7 @@ namespace AutomatinisTestavimas2.Test
 {
     public class EshopNewFirstItemTest
     {
-        private static EshopNewFirtsItemPage _page;
+        /*private static EshopNewFirtsItemPage _page;
 
         [OneTimeSetUp]
         public static void SetUp()
@@ -30,12 +30,13 @@ namespace AutomatinisTestavimas2.Test
         [Test]
         public void CheckWishList() 
         {
-            _page.AgreeClick()
-                 .PutToWishList()
-                 .CheckWishButton()
-                 .CheckIfWithoutLogin()
-                 .CheckItembefore()
-                 .CheckPutToBasket();
-        }
+            _eshopNewFirtsItemPage.NavigateToDefaultPage()
+                                  .AgreeClick()
+                                  .PutToWishList()
+                                  .CheckWishButton()
+                                  .CheckIfWithoutLogin()
+                                  .CheckItembefore()
+                                  .CheckPutToBasket();
+        }*/
     }
 }

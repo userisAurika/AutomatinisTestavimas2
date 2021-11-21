@@ -10,29 +10,15 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-    public class EshopNewTest
+    public class EshopNewTest : BaseTest
     {
-        private static EshopNewPage _page;
-
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new EshopNewPage(driver);
-        }
-        [OneTimeTearDown]
-        public static void TearDown()
-        {
-            _page.CloseBrowser();
-        }
         [Test]
         public void VerifyValidLogin()
         {
             string myMail = "aurikaa@gmail.com";
             string myPassword = "Testavicius321";
-            _page.ClickAccountButton()
+            _eshopNewPage.NavigateToDefaultPage()
+                 .ClickAccountButton()
                  .ClickPrivatePolicy()
                  .InputEmailText(myMail)
                  .InputPasswordText(myPassword)
@@ -45,24 +31,51 @@ namespace AutomatinisTestavimas2.Test
         public void VerifyInvalidLogin()
         {
             string myText = "test@321";
-            _page.ClickAccountButton()
-                  .ClickPrivatePolicy()
-                  .InputEmailText(myText)
-                  .InputPasswordText(myText)
-                  .ClickButton()
-                  .CheckIfLoginFailed();
+            _eshopNewPage.NavigateToDefaultPage()
+                         .ClickAccountButton()
+                         .ClickPrivatePolicy()
+                         .InputEmailText(myText)
+                         .InputPasswordText(myText)
+                         .ClickButton()
+                         .CheckIfLoginFailed();
         }
         [Test]
         public void OpenNewbutton()
         {
-            _page.ClickSinCare();
+            _eshopNewPage.NavigateToDefaultPage()
+                         .ClickSinCare();
         }
         [Test]
-        public void SearchField() 
+        public void SearchField()
         {
             string myItem = "ZARQA VONIOS IR DUŠO GELIS JAUTRIAI ODAI, 200 ml";
-               _page.CheckSearchField(myItem);
-                
+            _eshopNewPage.NavigateToDefaultPage()
+                         .CheckSearchField(myItem);
+
+        }
+        [Test]
+        public void CheckWishList()
+        {
+            _eshopNewFirtsItemPage.NavigateToDefaultPage()
+                                  .AgreeClick()
+                                  .PutToWishList()
+                                  .CheckWishButton()
+                                  .CheckIfWithoutLogin()
+                                  .CheckItembefore()
+                                  .CheckPutToBasket();
+        }
+        [Test]
+        public void BuyFirstItem()
+        {
+            _eshopNewBuyItemPage.NavigateToDefaultPage()
+                .AcceptCookie()
+                .ChooseFindItem()
+                .ClickOnBasketButtonToBuy()
+                .FirstStepToBuy()
+                .SecondStepToBuy()
+                .CheckSum()
+                .FinalButton()
+                .FinalInfo();
         }
     }
 }

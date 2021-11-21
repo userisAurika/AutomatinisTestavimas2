@@ -1,4 +1,5 @@
-﻿using AutomatinisTestavimas2.Pages;
+﻿using AutomatinisTestavimas2.Driver;
+using AutomatinisTestavimas2.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,35 +11,20 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-    public class DropDownTest
+    public class DropDownTest : BaseTest
     {
-        private static DropDownPage _page;//aprasom dropdown page
-
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new DropDownPage(driver);
-        }
-
-        [OneTimeTearDown]
-
-        public static void TearDown()
-        {
-            _page.CloseBrowser();
-        }
         [Test]
         public void TestDropDown() 
         {
-            _page.SelectFromDropDownByValue("Friday")
+            _dropDownPage.NavigateToDefaultPage()
+                .SelectFromDropDownByValue("Friday")
                 .VerifyResult("Friday");
         }
         [Test]
         public void TestMultiDropDown()//valstiju paieska
         {
-            _page.SelectFromMultiDropDownByValue("Ohio", "Florida")
+            _dropDownPage.NavigateToDefaultPage()
+                .SelectFromMultiDropDownByValue("Ohio", "Florida")
                 .ClickFirstSelectedButton();
                 
         }

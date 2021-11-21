@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-   public class EshopNewBuyItemTest
+   public class EshopNewBuyItemTest : BaseTest
     {
-        private static EshopNewBuyItemPage _page;
+       /* private static EshopNewBuyItemPage _page;
         
         [OneTimeSetUp]
         public static void SetUp()
@@ -27,11 +27,12 @@ namespace AutomatinisTestavimas2.Test
         public static void TearDown()
         {
             _page.CloseBrowser();
-        }     
+        }    
         [Test]
         public void BuyFirstItem() 
         {
-            _page.AcceptCookie()
+            _eshopNewBuyItemPage.NavigateToDefaultPage()
+                .AcceptCookie()
                 .ChooseFindItem()
                 .ClickOnBasketButtonToBuy()
                 .FirstStepToBuy()
@@ -39,9 +40,8 @@ namespace AutomatinisTestavimas2.Test
                 .CheckSum()
                 .FinalButton()
                 .FinalInfo();
-
-
-        }
-
+       */
     }
+
 }
+

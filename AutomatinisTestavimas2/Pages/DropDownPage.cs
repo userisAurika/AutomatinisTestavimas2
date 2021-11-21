@@ -26,6 +26,12 @@ namespace AutomatinisTestavimas2.Pages
         {
             Driver.Url = PageAddress;
         }
+        public DropDownPage NavigateToDefaultPage()
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
+        }
         public DropDownPage SelectFromDropdownByText(string text) // apsirasau metoda, geriau nenaudoti teksto, geriau naudoti value rei
         {
             DropDown.SelectByText(text);

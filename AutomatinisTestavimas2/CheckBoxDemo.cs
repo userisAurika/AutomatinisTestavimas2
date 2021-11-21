@@ -37,6 +37,7 @@ namespace AutomatinisTestavimas2
         }
 
         [Test]
+        [Obsolete]
         public static void TestMultipleCheckbox()
         {
             IWebElement firstCheckbox = _driver.FindElement(By.Id("isAgeSelected"));
@@ -47,6 +48,9 @@ namespace AutomatinisTestavimas2
             {
                 element.Click();
             }
+            IWebElement button = _driver.FindElement(By.Id("check1"));
+            button.GetProperty("value");
+
         }
     }
 }

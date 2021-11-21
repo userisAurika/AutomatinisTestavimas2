@@ -23,9 +23,14 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement FinalBuyButton => Driver.FindElement(By.CssSelector("body > main > div.wrap.order-page > div:nth-child(5) > div > div.buttons > a"));
         private IWebElement PageInformation => Driver.FindElement(By.CssSelector("body > main > div.wrap.order-page > form > div.heading36"));
         public EshopNewBuyItemPage(IWebDriver webdriver) : base(webdriver)
+        {}
+        public EshopNewBuyItemPage NavigateToDefaultPage()
         {
-            Driver.Url = PageAddress;
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
         }
+
         public EshopNewBuyItemPage AcceptCookie() 
         {
             Accept.Click();

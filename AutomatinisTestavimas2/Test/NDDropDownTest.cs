@@ -10,25 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutomatinisTestavimas2.Test
 {
-    public class NDDropDownTest
+    public class NDDropDownTest : BaseTest
     {
-        private static NDDropDownPage _page;//aprasom dropdown page
 
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new NDDropDownPage(driver);
-        }
-
-        [OneTimeTearDown]
-
-        public static void TearDown()
-        {
-            _page.CloseBrowser();
-        }
         /*[Test]
         public void TestMultiDropDown()//pirmos pasirinktos valstijos paieska
         {
@@ -40,14 +24,16 @@ namespace AutomatinisTestavimas2.Test
         [TestCase("Washington", "New York", "New Jersey", TestName = "Pasirenkame 3 reiksmes ir patikriname pirma pasirinkima")]
         public void TestMultipleDropdownGetOne(params string[] selectedElement) //imam kaip masyva string tipo reiksme skliaustuose
         {
-            _page.SelectFromMultipleDropDownByValue(selectedElement.ToList())
+            _ndDrobDownPage.NavigateToDefaultPage()
+                .SelectFromMultipleDropDownByValue(selectedElement.ToList())
                 .CheckFirstState(selectedElement[0]);
         }
         [TestCase("New Jersey", "California", TestName = "Pasirenkame 2 reiksmes ir patikriname visus pasirinkimus")]
         [TestCase("Washington", "Ohio", "Texas", "Florida", TestName = "Pasirenkame 4 reiksmes ir patikriname visus pasirinkimus")]
         public void TestMultipleDropdownGetAll(params string[] selectedElement)
         {
-            _page.SelectFromMultipleDropDownByValueCheck(selectedElement.ToList())
+            _ndDrobDownPage.NavigateToDefaultPage()
+                .SelectFromMultipleDropDownByValueCheck(selectedElement.ToList())
                 .ClickAllSelectedButton();
         }
     }

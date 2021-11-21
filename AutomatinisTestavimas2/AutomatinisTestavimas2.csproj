@@ -61,12 +61,12 @@
     <Compile Include="demo01.cs" />
     <Compile Include="Demo03.cs" />
     <Compile Include="Driver\Browsers.cs" />
-    <Compile Include="Driver\CustumeDriver.cs" />
-    <Compile Include="Juodrastis.cs" />
+    <Compile Include="Driver\CustomeDriver.cs" />
     <Compile Include="NamuDarbai.cs" />
     <Compile Include="CheckBoxLektore.cs" />
     <Compile Include="NDpvz.cs" />
     <Compile Include="OptimizuotiND.cs" />
+    <Compile Include="Pages\AlertPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\CheckBoxDemoPage.cs" />
     <Compile Include="Pages\DropDownPage.cs" />
@@ -76,11 +76,14 @@
     <Compile Include="Pages\EshopNewBuyItemPage.cs" />
     <Compile Include="Pages\EshopNewFirtsItemPage.cs" />
     <Compile Include="Pages\NDDropDownPage.cs" />
+    <Compile Include="Pages\SebPage.cs" />
     <Compile Include="Pages\SeleniumInputPage.cs" />
+    <Compile Include="Pages\SenukaiPage.cs" />
     <Compile Include="Pages\VartuTechnikaPage.cs" />
     <Compile Include="papildoma uzduotis.cs" />
     <Compile Include="PapUzduotisPagalLektore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\AlertTest.cs" />
     <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\CheckBoxDemoTest.cs" />
     <Compile Include="Test\DropDownTest.cs" />
@@ -89,10 +92,12 @@
     <Compile Include="Test\EshopTest.cs" />
     <Compile Include="Test\EshopNewFirstItemTest.cs" />
     <Compile Include="Test\NDDropDownTest.cs" />
+    <Compile Include="Test\SebTest.cs" />
     <Compile Include="Test\SeleniumInputTest.cs" />
     <Compile Include="Test\EshopNewBuyItemTest.cs" />
+    <Compile Include="Test\SenukaiTest.cs" />
     <Compile Include="Test\VartuTechnikaTest.cs" />
-    <Compile Include="Tools\MyScreenShot.cs" />
+    <Compile Include="Tools\MyScreenshot.cs" />
     <Compile Include="VartuTechnika.cs" />
   </ItemGroup>
   <ItemGroup>

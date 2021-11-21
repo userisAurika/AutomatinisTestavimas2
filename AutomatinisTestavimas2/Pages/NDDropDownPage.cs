@@ -21,6 +21,12 @@ namespace AutomatinisTestavimas2.Pages
         {
             Driver.Url = PageAddress;
         }
+        public NDDropDownPage NavigateToDefaultPage()
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
+        }
         /*public NDDropDownPage SelectFromMultiDropDownByValue(string firstValue, string secondValue) //pasirenku reiksmes(valstijos)
         {
             Actions action = new Actions(Driver);

@@ -9,7 +9,10 @@ namespace AutomatinisTestavimas2.Driver
    enum Browsers//nekintanti statiniai dalykai
     {
         Chrome,
+        IncognitoChrome,
         Firefox,
-        Opera
+        Opera,
+        Edge,
+        Safari
     }
 }
