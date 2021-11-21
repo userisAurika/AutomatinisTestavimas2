@@ -70,7 +70,7 @@ namespace AutomatinisTestavimas2.Pages
 
         public EshopNewPage CheckIfLoginFailed()
         {
-            Thread.Sleep(2000 );
+            Thread.Sleep(2000);
             string statusMsg = LoginMessage.Text;
             //string expectedAlertValue = "Įspėjimas: Jūs viršijote leistiną bandymų prisijungti kiekį. Prašome pamėginti dar kartą už 1 valandos.";
             string expectedAlertValue = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
