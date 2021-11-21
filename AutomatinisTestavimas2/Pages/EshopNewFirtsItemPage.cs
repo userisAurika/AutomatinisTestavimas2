@@ -49,8 +49,8 @@ namespace AutomatinisTestavimas2.Pages
         }
         public EshopNewFirtsItemPage CheckIfWithoutLogin() 
         {
-            var statusOfQ = "1";
-            var expectedQuantity= "1";
+            string statusOfQ = "1";
+            string expectedQuantity= "1";
             Assert.IsTrue(statusOfQ.Equals(expectedQuantity));
             return this;
         }
@@ -64,6 +64,12 @@ namespace AutomatinisTestavimas2.Pages
             PutToBasket.Click();
             return this;
         }
-
+        public EshopNewFirtsItemPage CheckIfItemIsInBasket()
+        {
+            string send= "1";
+            string expected = "1";
+            Assert.IsTrue(send.Equals(expected));
+            return this;
+        }
     }
 }

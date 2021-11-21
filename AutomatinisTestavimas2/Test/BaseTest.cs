@@ -20,6 +20,7 @@ namespace AutomatinisTestavimas2.Test
         public static NDDropDownPage _ndDrobDownPage;
         public static SenukaiPage _senukaiPage;
         public static SebPage _sebPage;
+        public static AlertPage _alertPage;
 
         public static EshopNewPage _eshopNewPage;
         public static EshopNewFirtsItemPage _eshopNewFirtsItemPage;
@@ -29,11 +30,13 @@ namespace AutomatinisTestavimas2.Test
         public static void SetUp()
         {
             driver = CustomeDriver.GetChromeDriver();
+            //driver = CustomeDriver.GetIncognitoChrome();
             _dropDownPage = new DropDownPage(driver);
             _vartuTechnikaPage = new VartuTechnikaPage(driver);
             _ndDrobDownPage = new NDDropDownPage(driver);
             _senukaiPage = new SenukaiPage(driver);
             _sebPage = new SebPage(driver);
+            _alertPage = new AlertPage(driver);
 
             _eshopNewPage = new EshopNewPage(driver);
             _eshopNewFirtsItemPage = new EshopNewFirtsItemPage(driver);

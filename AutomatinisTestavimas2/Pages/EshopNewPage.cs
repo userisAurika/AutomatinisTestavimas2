@@ -23,12 +23,7 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement MyLogin => Driver.FindElement(By.XPath("//html/body/main/div[1]/div[1]/h1"));
         private IWebElement LoginMessage => Driver.FindElement(By.XPath("//html/body/main/div[1]/div[3]"));
         private IWebElement SkinCare => Driver.FindElement(By.CssSelector("#menu > ul > li:nth-child(2) > a"));
-        //private IWebElement SearchFieldButton => Driver.FindElement(By.CssSelector("#search > form > input[type=text]:nth-child(1)"));
         private IWebElement SearchFieldButton => Driver.FindElement(By.CssSelector("#search > form > input[type=text]:nth-child(1)"));
-        //# search > form > input[type=text]:nth-child(1)
-        //*[@id="search"]/form/input[1]
-        //*[@id="search"]/form/input[1]
-        //# search > form
         private IWebElement Search => Driver.FindElement(By.CssSelector("#search > form > input[type=submit]:nth-child(2)"));
         private IWebElement AgreeCookie => Driver.FindElement(By.CssSelector("#cookies_box > div > button.agree_button"));
 
@@ -77,7 +72,7 @@ namespace AutomatinisTestavimas2.Pages
         {
             Thread.Sleep(2000 );
             string statusMsg = LoginMessage.Text;
-            //var expectedAlertValue = "Įspėjimas: Jūs viršijote leistiną bandymų prisijungti kiekį. Prašome pamėginti dar kartą už 1 valandos.";
+            //string expectedAlertValue = "Įspėjimas: Jūs viršijote leistiną bandymų prisijungti kiekį. Prašome pamėginti dar kartą už 1 valandos.";
             string expectedAlertValue = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
             Assert.IsTrue(statusMsg.Equals(expectedAlertValue));   
             return this;
@@ -111,9 +106,11 @@ namespace AutomatinisTestavimas2.Pages
             Actions action = new Actions(Driver);
             action.Click(AgreeCookie).Perform();
             Thread.Sleep(4000);
-            action.MoveToElement(SearchFieldButton).Perform();
+            SearchFieldButton.Click();
+            //action.MoveToElement(SearchFieldButton).Perform();
             SearchFieldButton.SendKeys(text);
-            action.Click(Search).Perform();
+            Search.Click();
+            //action.Click(Search).Perform();
             return this;
         }
 

@@ -19,7 +19,7 @@ namespace AutomatinisTestavimas2.Driver
         {
             return GetDriver(Browsers.Firefox);
         }
-        public static IWebDriver IncognitoChrome()
+        public static IWebDriver GetIncognitoChrome()
         {
             return GetDriver(Browsers.IncognitoChrome);
         }

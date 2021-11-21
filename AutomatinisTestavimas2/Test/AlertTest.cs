@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,28 @@ namespace AutomatinisTestavimas2.Test
 {
     public class AlertTest : BaseTest
     {
-        private const string PageAddress = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
+        [Test]
+        public static void TestAlert()
+        {
+            _alertPage.NavigateToDefaultPage()
+                .ClickAlertButton()
+                .AcceptAlert();
+        }
+
+        [Test]
+        public static void TestConfirmationAlert()
+        {
+            _alertPage.NavigateToDefaultPage()
+                .ClickConfirmationAlertButton()
+                .DismissConfirmationAlert();
+        }
+
+        [Test]
+        public static void TestPromptAlert()
+        {
+            _alertPage.NavigateToDefaultPage()
+                .ClickPromptAlertButton()
+                .InsertTextAndAcceptPromptAlert("Penktadienis");
+        }
     }
 }

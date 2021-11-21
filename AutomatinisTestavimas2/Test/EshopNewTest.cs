@@ -43,15 +43,8 @@ namespace AutomatinisTestavimas2.Test
         public void OpenNewbutton()
         {
             _eshopNewPage.NavigateToDefaultPage()
+                         .ClickPrivatePolicy()
                          .ClickSinCare();
-        }
-        [Test]
-        public void SearchField()
-        {
-            string myItem = "ZARQA VONIOS IR DUŠO GELIS JAUTRIAI ODAI, 200 ml";
-            _eshopNewPage.NavigateToDefaultPage()
-                         .CheckSearchField(myItem);
-
         }
         [Test]
         public void CheckWishList()
@@ -62,8 +55,19 @@ namespace AutomatinisTestavimas2.Test
                                   .CheckWishButton()
                                   .CheckIfWithoutLogin()
                                   .CheckItembefore()
-                                  .CheckPutToBasket();
+                                  .CheckPutToBasket()
+                                  .CheckIfItemIsInBasket();
         }
+
+        [Test]
+        public void SearchField()
+        {
+            string myItem = "ZARQA VONIOS IR DUŠO GELIS JAUTRIAI ODAI, 200 ml";
+            _eshopNewPage.NavigateToDefaultPage()
+                         .CheckSearchField(myItem);
+
+        }
+        
         [Test]
         public void BuyFirstItem()
         {

@@ -10,7 +10,6 @@ namespace AutomatinisTestavimas2.Pages
     public class BasePage
     {
         protected static IWebDriver Driver;
-        //apsirasome driverius, closebrowseri, ir nukreipti paveldejimui
         public BasePage(IWebDriver webDriver)
         {
             Driver = webDriver;
@@ -18,7 +17,7 @@ namespace AutomatinisTestavimas2.Pages
 
         public void CloseBrowser()
         {
-            // Driver.Quit();
+             Driver.Quit();
         }
     }
 }
