@@ -20,7 +20,8 @@ namespace AutomatinisTestavimas2.Pages
         private IWebElement BasketButton => Driver.FindElement(By.Id("button-cart"));
         private IWebElement BasketPush => Driver.FindElement(By.CssSelector("body > header > div.wrap > div.top > div.header-buttons > div > div > button"));
         private IWebElement BuyButton => Driver.FindElement(By.CssSelector("body > header > div.wrap > div.top > div.header-buttons > div > div > div > a"));
-        private IWebElement FinalBuyButton => Driver.FindElement(By.CssSelector("body > main > div.wrap.order-page > div:nth-child(5) > div > div.buttons > a"));
+        private IWebElement FinalBuyButton => Driver.FindElement(By.CssSelector("body > main > div.wrap.order-page > div:nth-child(8) > div > div.buttons > a"));
+        //body > main > div.wrap.order-page > div:nth-child(8) > div > div.buttons > a
         private IWebElement PageInformation => Driver.FindElement(By.CssSelector("body > main > div.wrap.order-page > form > div.heading36"));
         public EshopNewBuyItemPage(IWebDriver webdriver) : base(webdriver)
         {}
@@ -41,21 +42,39 @@ namespace AutomatinisTestavimas2.Pages
             FindItem.Click();
             return this;
         }
+        private void WaitResult()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => BasketButton.Displayed);
+        }
         public EshopNewBuyItemPage ClickOnBasketButtonToBuy() 
         {
             BasketButton.Click();
+            //WaitResult();
             Thread.Sleep(4000);
             return this;
+        }
+        private void Wait()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => BasketPush.Displayed);
         }
         public EshopNewBuyItemPage FirstStepToBuy() 
         {
             BasketPush.Click();
-            Thread.Sleep(5000);
+            Wait();
+            //Thread.Sleep(5000);
             return this;
+        }
+        private void WaitBuyButton()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => BuyButton.Displayed);
         }
         public EshopNewBuyItemPage SecondStepToBuy() 
         {
             BuyButton.Click();
+            //WaitBuyButton();
             Thread.Sleep(3000);
             return this;
         }

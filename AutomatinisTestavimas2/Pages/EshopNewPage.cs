@@ -101,13 +101,19 @@ namespace AutomatinisTestavimas2.Pages
             SkinCare.Click();
             return this;
         }
+        private void WaitFor()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => SearchFieldButton.Displayed);
+        }
         public EshopNewPage CheckSearchField(string text) 
         {
             Actions action = new Actions(Driver);
             action.Click(AgreeCookie).Perform();
-            Thread.Sleep(4000);
+            //Thread.Sleep(4000);
+            WaitFor();
             SearchFieldButton.Click();
-            //action.MoveToElement(SearchFieldButton).Perform();
+           //action.MoveToElement(SearchFieldButton).Perform();
             SearchFieldButton.SendKeys(text);
             Search.Click();
             //action.Click(Search).Perform();

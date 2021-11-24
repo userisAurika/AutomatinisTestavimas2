@@ -30,7 +30,7 @@ namespace AutomatinisTestavimas2.Test
         public static void SetUp()
         {
             driver = CustomeDriver.GetChromeDriver();
-            //driver = CustomeDriver.GetIncognitoChrome();
+            driver = CustomeDriver.GetIncognitoChrome();
             _dropDownPage = new DropDownPage(driver);
             _vartuTechnikaPage = new VartuTechnikaPage(driver);
             _ndDrobDownPage = new NDDropDownPage(driver);

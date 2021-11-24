@@ -30,7 +30,7 @@ namespace AutomatinisTestavimas2.Pages
 
         private IWebElement ResultTextElement => Driver.FindElement(By.XPath("/html/body/header[2]/div/div/div[2]/ul/li[5]/text()"));
         private SelectElement  ButtonVidausSviestuvai => new SelectElement(Driver.FindElement(By.CssSelector("body > nav > div > div > ul > li:nth-child(2) > a")));
-        private IWebElement ResultTextelement => Driver.FindElement(By.CssSelector("body > nav > div > div > ul > li:nth-child(2) > ul > li:nth-child(3)"));
+        private IWebElement ResultTextelement => Driver.FindElement(By.Id("language"));
         public EshopPage(IWebDriver webdriver) : base(webdriver)
         {
             Driver.Url = PageAddress;
